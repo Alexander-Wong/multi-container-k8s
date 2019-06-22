@@ -1,0 +1,18 @@
+sudo: required
+services:
+  - docker
+before_install:
+  - docker build -t alexwong/react-test -f ./client/Dockerfile.dev .
+
+after_success:
+  - docker build -t alexwong/multi-client -f ./client 
+  - docker build -t alexwong/multi-nginx -f ./nginx
+  - docker build -t alexwong/multi-server -f ./server
+  - docker build -t alexwong/multi-worker -f ./worker
+# Log in to docker CLI
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+# push to docker hub
+  - docker push alexwong/multi-client
+  - docker push alexwong/multi-nginx
+  - docker push alexwong/multi-server
+  - docker push alexwong/multi-worker
