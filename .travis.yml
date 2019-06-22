@@ -8,15 +8,15 @@ script:
   - docker run alexwong/react-test npm run test -- --coverage   
 
 after_success:
-  - docker build -t alexwong/multi-client ./client 
-  - docker build -t alexwong/multi-nginx ./nginx
-  - docker build -t alexwong/multi-server ./server
-  - docker build -t alexwong/multi-worker ./worker
+  - docker build -t lexwong/multi-client ./client 
+  - docker build -t lexwong/multi-nginx ./nginx
+  - docker build -t lexwong/multi-server ./server
+  - docker build -t lexwong/multi-worker ./worker
 # Log in to docker CLI
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
 # push to docker hub
-  - docker tag alexwong/multi-client:1.0.0 new-repo:1.0.0
-  - docker push alexwong/multi-client:1.0.0
+  - docker tag  lexwong/multi-client lexwong/multi-client
+  - docker push lexwong/multi-client
   #- docker push alexwong/multi-nginx:1.0.0
   #- docker push alexwong/multi-server:1.0.0
   #- docker push alexwong/multi-worker:1.0.0
