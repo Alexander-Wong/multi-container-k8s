@@ -6,12 +6,12 @@ before_install:
 
 script:
   - docker run alexwong/react-test npm run test -- --coverage   
-  
+
 after_success:
-  - docker build -t alexwong/multi-client -f ./client 
-  - docker build -t alexwong/multi-nginx -f ./nginx
-  - docker build -t alexwong/multi-server -f ./server
-  - docker build -t alexwong/multi-worker -f ./worker
+  - docker build -t alexwong/multi-client ./client 
+  - docker build -t alexwong/multi-nginx ./nginx
+  - docker build -t alexwong/multi-server ./server
+  - docker build -t alexwong/multi-worker ./worker
 # Log in to docker CLI
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
 # push to docker hub
