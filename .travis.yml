@@ -15,7 +15,8 @@ after_success:
 # Log in to docker CLI
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
 # push to docker hub
+  - docker tag alexwong/multi-client:1.0.0 new-repo:1.0.0
   - docker push alexwong/multi-client:1.0.0
-  - docker push alexwong/multi-nginx:1.0.0
-  - docker push alexwong/multi-server:1.0.0
-  - docker push alexwong/multi-worker:1.0.0
+  #- docker push alexwong/multi-nginx:1.0.0
+  #- docker push alexwong/multi-server:1.0.0
+  #- docker push alexwong/multi-worker:1.0.0
