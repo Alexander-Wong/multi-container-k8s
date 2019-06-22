@@ -4,6 +4,9 @@ services:
 before_install:
   - docker build -t alexwong/react-test -f ./client/Dockerfile.dev ./client
 
+script:
+  - docker run alexwong/react-test npm run test -- --coverage   
+  
 after_success:
   - docker build -t alexwong/multi-client -f ./client 
   - docker build -t alexwong/multi-nginx -f ./nginx
