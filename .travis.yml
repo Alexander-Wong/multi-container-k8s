@@ -17,6 +17,9 @@ after_success:
 # push to docker hub
   - docker tag  lexwong/multi-client lexwong/multi-client
   - docker push lexwong/multi-client
-  #- docker push alexwong/multi-nginx:1.0.0
-  #- docker push alexwong/multi-server:1.0.0
-  #- docker push alexwong/multi-worker:1.0.0
+  - docker tag  lexwong/multi-nginx lexwong/multi-nginx
+  - docker push lexwong/multi-nginx
+  - docker tag  lexwong/multi-server lexwong/multi-server
+  - docker push lexwong/multi-server
+  - docker tag  lexwong/multi-worker lexwong/multi-worker
+  - docker push lexwong/multi-worker
